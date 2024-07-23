@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import DbCon from './utils/db.js';
 import AuthRoutes from './routes/Auth.js';
+import cookieParser from 'cookie-parser';
+import AdminRoutes from './routes/AdminRoutes.js';
 
 dotenv.config();
 
@@ -14,8 +16,10 @@ DbCon();
 
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 app.use('/api/auth', AuthRoutes);
+app.use('/api/admin', AdminRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
