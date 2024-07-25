@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { post } from '../services/ApiEndpoint';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +13,12 @@ const Login = () => {
     try {
       const request = await post('/api/auth/login', { email, password });
       const response = request.data;
+      if (request.status == 200) {
+        toast.success(response.message);
+      }
+      //    else {
+      //     toast.error(response.message);
+      //   }
       console.log(response);
     } catch (error) {
       console.log(error);
