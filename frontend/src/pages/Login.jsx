@@ -16,12 +16,10 @@ const Login = () => {
       if (request.status == 200) {
         toast.success(response.message);
       }
-      //    else {
-      //     toast.error(response.message);
-      //   }
       console.log(response);
     } catch (error) {
       console.log(error);
+      //   toast.error('Somethinng went wrong');
     }
   };
 

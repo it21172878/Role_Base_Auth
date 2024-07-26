@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { post } from '../services/ApiEndpoint';
+import toast from 'react-hot-toast';
 
 const Register = () => {
   const [name, setName] = useState();
@@ -17,6 +18,9 @@ const Register = () => {
       });
       const response = request.data;
       console.log(response);
+      if (request.status == 200) {
+        toast.success(response.message);
+      }
     } catch (error) {
       console.log(error);
     }
